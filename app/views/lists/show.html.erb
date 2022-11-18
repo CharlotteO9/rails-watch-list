@@ -1,12 +1,16 @@
 <h1><%= @list.name%></h1>
-<br>
+<% if @list.photo.attached? %>
+  <%= cl_image_tag @list.photo.key, height: 300, width: 400, crop: :fill %>
+<% else %>
+  <img src="<%= asset_path('list_background.jpg') %>" alt="">
+<% end %>
 
 <% @bookmarks_list.each do |bookmark| %>
   <div class="card">
-    <%= bookmark.movie.title %><br>
-    <%= bookmark.movie.overview %><br>
-    <%= bookmark.movie.rating %><br>
-    <%= bookmark.movie.poster_url %><br>
+    <%= bookmark.movie.title %>
+    <%= bookmark.movie.overview %>
+    <%= bookmark.movie.rating %>
+    <img src="<%= bookmark.movie.poster_url %>" alt="">
     <%= link_to 'Delete', bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
   </div>
 <% end %>
