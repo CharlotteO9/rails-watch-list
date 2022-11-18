@@ -6,6 +6,7 @@
     <%= bookmark.movie.title %><br>
     <%= bookmark.movie.overview %><br>
     <%= bookmark.movie.rating %><br>
+    <%= bookmark.movie.poster_url %><br>
     <%= link_to 'Delete', bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
   </div>
 <% end %>
